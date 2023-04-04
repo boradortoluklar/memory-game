@@ -63,10 +63,8 @@ export default class MindGameBoard extends Vue {
     if (cell.visible || this.selectedCells.includes(cell)) {
       return
     }
-
     // Reveal the selected cell
     cell.visible = true
-
     // Add the cell to the list of selected cells
     this.selectedCells.push(cell)
 
@@ -81,6 +79,7 @@ export default class MindGameBoard extends Vue {
         this.selectedCells = []
       } else {
         // The selected cells do not match, hide the cells and reset the list of selected cells
+        this.$toast.error('Unmatch!')
         setTimeout(() => {
           this.selectedCells.forEach((c) => (c.visible = false))
           this.selectedCells = []
